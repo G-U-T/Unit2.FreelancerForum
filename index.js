@@ -5,14 +5,17 @@ const freelancers = [
 	{ name: "Mr. E", occupation: "Unknown..?", starting_price: 1000 },
 ]
 
-const freelancerPriceSum = freelancers.reduce(
-	(accumulator, freelancer) => accumulator + freelancer.starting_price,
-	0,
-);
-const freelancerPriceAverage = freelancerPriceSum / freelancers.length;
+const getAveragePrice = (freelancerArray) => {
+	const freelancerPriceSum = freelancers.reduce(
+		(accumulator, freelancer) => accumulator + freelancer.starting_price,
+		0,
+	);
+
+	return freelancerPriceSum / freelancers.length;
+}
 
 const averagePriceLabel = document.querySelector("p");
-averagePriceLabel.textContent += `$${freelancerPriceAverage}.`;
+averagePriceLabel.textContent += `$${getAveragePrice(freelancers)}.`;
 
 const freelancerTable = document.querySelector("table");
 freelancerTable.style.background = "black";
